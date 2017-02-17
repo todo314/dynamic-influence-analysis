@@ -12,13 +12,11 @@ Our index can be build as follows:
     #include "dim.hpp"
     DIM dim;
     dim.init();
-    dim.set_beta(0);
     for all vertex v
     	dim.insert(v); // Insert vertex v
     for all edge (u, v)
     	dim.insert(u, v); // Insert edge (u,v)
-    dim.set_beta(beta); // Set \beta=32 (See paper)
-	dim._adjust();
+    dim.set_beta(beta); // Set β (See paper)
 
 ### Dynamic updates
 * insert(int v): Insert vertex v
@@ -37,14 +35,14 @@ Our index can be build as follows:
     #include "dim.hpp"
     DIM dim;
     dim.init();
-    dim.set_beta(0);
 
+    // index construction
     dim.insert(0);
     dim.insert(1);
     dim.insert(0, 1, 0.4);
 	dim.set_beta(32);
-	dim._adjust();
 
+    // dynamic updates
     dim.insert(2);
     dim.insert(3);
 
@@ -52,6 +50,7 @@ Our index can be build as follows:
     dim.insert(2, 0, 0.6);
     dim.insert(2, 3, 0.7);
 
+    // influence queries
     dim.infest(0); 
     dim.infmax(1);
 
